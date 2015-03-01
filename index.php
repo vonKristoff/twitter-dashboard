@@ -1,4 +1,4 @@
-<?php include("authentication.php"); ?>
+<?php include("server/authentication.php"); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,4 +12,4 @@
 
 <script data-main="js/main" src="bower_components/requirejs/require.js"></script>
 </html>
-<?php include("callback.php"); ?>
+<?php include("server/callback.php"); ?>

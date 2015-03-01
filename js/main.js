@@ -1,6 +1,6 @@
 require(['config'], function(){
 
-  require(['backbone', 'app', 'router'], function (Backbone, App, Router) {
+  require(['backbone', 'router', 'views/body'], function (Backbone, Router, Body) {
 
     window.Broadcast = _.extend({},Backbone.Events);
 
@@ -10,10 +10,13 @@ require(['config'], function(){
 
     if(window.auth) {
 
-      window.App = new App(); 
+      window.App = new Body(); 
 
       App.router = new Router();
-      Backbone.history.start(); // { pushState: true }        
+      Backbone.history.start({
+        root: '/twitter-dashboard/',
+        pushState: true
+      });
     
     }
       

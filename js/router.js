@@ -1,20 +1,20 @@
-define(['backbone'],function(Backbone){
+define(['backbone','views/dashboard', 'views/favourites'],function (Backbone, Dashboard, Favourites){
 	
 	var Router = Backbone.Router.extend({
 
 		routes:{
 			'': 'dashboard',
-      '/stats': 'stats',
-      '/favourites': 'faves'
+      'favourites': 'faves'
 		},
 		dashboard:function(){
       // render the relevant view here
+      console.log('router:dashboard');
+      var content = new Dashboard();
 		},
-    stats: function (){
-      // render the relevant view here
-    },
     faves: function (){
       // render the relevant view here
+      console.log('router:favourites');
+      var content = new Favourites();
     }
 	})
 	return Router
