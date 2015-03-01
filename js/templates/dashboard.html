@@ -1,0 +1,30 @@
+<script type="text/handlebars">
+
+<div class="dashboard--container">
+  <div class="user">
+    <div class="handle"></div>
+    <div class="stats">
+      <div class="pie-ratio">
+        <div class="followers">{{ followers_count }}</div>
+        <div class="following">{{ friends_count }}</div>
+      </div>
+      <div class="avatar" data-bg={{ profile_image_url }}></div>
+    </div>
+  </div>
+  <div class="incoming">
+    <ul class="tweets">
+      <li>
+        <div class="col-1">
+          <div class="avatar"></div>
+        </div>
+        <div class="col-2">
+          <div class="details"></div>
+          <div class="text"></div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+</script>
+
