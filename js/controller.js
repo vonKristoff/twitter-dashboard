@@ -50,6 +50,12 @@ define(['backbone','text!handle.json'], function (Backbone, Handle){
         Controller.onresize[Controller.status].handle();  
       }
     },
+    pageMarker: function(){
+      // remove any instance existing
+      $('.nav>.btn.active').removeClass('active');
+      // set page class
+      $('.btn-'+Controller.status).addClass('active')
+    },
     resize: {
       dashboard:{
         handle:function(){}

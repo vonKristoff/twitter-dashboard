@@ -19,13 +19,17 @@ define(['backbone', 'text!templates/dashboard.html', 'controller', 'handlebars']
     },
     setInfluencePoll: function(){
       var results = Controller.pollInfluence();
-      // set css scale
-      $('.pie-left').css({
-        'transform': 'scale('+results.followers+')'
-      })
-      $('.pie-right').css({
-        'transform': 'scale('+results.following+')'
-      })
+      // set css scale, with delay
+      setTimeout(function(){
+        $('.pie-left').css({
+          'transform': 'scale('+results.followers+')',
+          'opacity': 1
+        })
+        $('.pie-right').css({
+          'transform': 'scale('+results.following+')',
+          'opacity': 1
+        })
+      },500);
     },
     render:function(){
 

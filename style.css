@@ -99,11 +99,17 @@ button {
 	width:49%;
 	text-align: left;
 }
+.key .left span {
+	color: #4cb8f4;
+}
 .key .right {
 	display: inline-block;
 	font-size: .7em;
 	width:49%;
 	text-align: right;
+}
+.key .right span {
+	color: #ff5039;
 }
 .pie-ratio {
 	width: 100%;
@@ -131,6 +137,7 @@ button {
 	width: 50%;
 	overflow: hidden;
 	height: 100%;
+	opacity: 0;
 	transform-origin: 100% 50%;
 	transform: scale(0.5);
 }
@@ -152,6 +159,7 @@ button {
 	overflow: hidden;
 	height: 100%;
 	left:50%;
+	opacity: 0;
 	transform-origin: 0% 50%;
 	transform: scale(0.5);
 }
