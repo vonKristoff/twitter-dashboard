@@ -1,4 +1,0 @@
-<?php
-  $CONSUMER_KEY = "wjsSeqG8gD1EtsS5VCKPnvWgn";
-  $CONSUMER_SECRET = "Iz51UGp9bUrOoa9Pa2ZZvP4jf3ZrGzPbB7wB9s6O8MvVPp9dJJ";
-?>
