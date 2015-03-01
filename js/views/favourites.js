@@ -5,12 +5,17 @@ define(['collections/fave-collection','views/tweets'], function (FaveCollection,
     tagName:'ul',
     className:'tweets',
     initialize:function(){
-
+      Controller.status = 'favourites';
       this.data = new FaveCollection();
 
       this.data.fetch().done(function(){
 
         // console.log(this.data);
+
+        // this.clonedCollection = this.data.clone();
+        // this.data.each(function(Model, i){
+        //   Model.set({order: i});
+        // })
 
         this.renderAll();
         

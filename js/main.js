@@ -1,6 +1,6 @@
 require(['config'], function(){
 
-  require(['backbone', 'router', 'views/body'], function (Backbone, Router, Body) {
+  require(['backbone', 'router', 'views/body', 'controller'], function (Backbone, Router, Body, Controller) {
 
     window.Broadcast = _.extend({},Backbone.Events);
 
@@ -18,6 +18,11 @@ require(['config'], function(){
         pushState: true
       });
     
+      // basic event listeners
+
+      Controller.getDimensions();
+      window.addEventListener('resize', Controller.getDimensions);
+
     }
       
   })

@@ -1,4 +1,4 @@
-define(['backbone','views/dashboard', 'views/favourites'],function (Backbone, Dashboard, Favourites){
+define(['backbone','views/dashboard', 'views/favourites', 'controller'],function (Backbone, Dashboard, Favourites, Controller){
 	
 	var Router = Backbone.Router.extend({
 
@@ -9,7 +9,11 @@ define(['backbone','views/dashboard', 'views/favourites'],function (Backbone, Da
 		dashboard:function(){
       // render the relevant view here
       console.log('router:dashboard');
-      var content = new Dashboard();
+      // dashboard route relies on existance of handle data
+      Controller.onConnection(function(){
+        var content = new Dashboard();  
+      })
+      
 		},
     faves: function (){
       // render the relevant view here

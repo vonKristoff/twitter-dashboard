@@ -6,10 +6,9 @@ define(['backbone', 'text!templates/body.html', 'controller', 'handlebars'], fun
     className:'wrapper',
     template: Handlebars.compile($(bodyTemplate).html()),
     initialize: function (){
-
-      // fetch basic data here
-
-      this.render();
+      Controller.getHandleData(function(){
+        this.render()
+      }.bind(this))
     },
     events:{
       'click .btn-dashboard':'navigate',
@@ -23,7 +22,8 @@ define(['backbone', 'text!templates/body.html', 'controller', 'handlebars'], fun
       Backbone.history.navigate(tgt, {trigger: true})
     },
     render: function (){
-      this.$el.append(this.template({name:'JCN'}));
+      
+      this.$el.append(this.template(Controller.user));
       return this
     }
   })
