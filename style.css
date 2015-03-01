@@ -1,0 +1,29 @@
+*{
+	margin:0px;
+	padding: 0px;
+}
+#performR{
+	width:300px;
+	height:550px;
+	background:#dedede;
+	/*overflow: hidden;*/
+}
+.layer{
+	width:100%;
+	position: absolute;
+}
+.blue{
+	background-color: rgba(200,255,200,.3);
+}
+.slides{
+	width:50%;
+	float: left;
+}
+.tweets{
+	width:200px;
+	background-color: grey;
+}
+.ref li{
+	padding:5px;
+	list-style: none;
+}
