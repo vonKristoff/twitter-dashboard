@@ -1,10 +1,43 @@
-define(['backbone'], function (Backbone){
+define(['backbone','text!handle.json'], function (Backbone, Handle){
 
   var Controller = {
     status:'booting',
     user: {},
     connected: false,
     dimensions:{ w:0, h:0, ratio:0 },
+    getHandleData: function (next){
+      
+
+      Controller.user = JSON.parse(Handle)
+
+      Controller.connected = true;
+      next();
+
+
+      // going local 
+      // $.ajax({
+      //   url:'server/handle.php',
+      //   method:'GET',
+      //   success: function (res){
+
+      //     console.log(res);
+
+      //     Controller.user = JSON.parse(res).pop();
+
+      //     Controller.connected = true;
+      //     next();
+      //   }
+      // })
+    },
+    onConnection: function (next){
+
+      var renderOnLoad = setInterval(function(){
+        if(Controller.connected){
+          clearInterval(renderOnLoad);
+          next();
+        } 
+      },100)
+    },
     getDimensions: function(){
       var dm = Controller.dimensions;
       dm.w = $(window).width();
@@ -21,28 +54,6 @@ define(['backbone'], function (Backbone){
         break;
       }
       
-    },
-    getHandleData: function (next){
-      
-      $.ajax({
-        url:'server/handle.php',
-        method:'GET',
-        success: function (res){
-
-          Controller.user = JSON.parse(res).pop();
-          Controller.connected = true;
-          next();
-        }
-      })
-    },
-    onConnection: function (next){
-
-      var renderOnLoad = setInterval(function(){
-        if(Controller.connected){
-          clearInterval(renderOnLoad);
-          next();
-        } 
-      },100)
     },
     randomBG: function($tgt){
       var r1 = Math.random()*7,

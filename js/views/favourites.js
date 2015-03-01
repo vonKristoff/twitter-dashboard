@@ -1,4 +1,4 @@
-define(['collections/fave-collection','views/tweets'], function (FaveCollection, TweetView){
+define(['collections/fave-collection','views/tweets', 'controller'], function (FaveCollection, TweetView, Controller){
 
   var appview = Backbone.View.extend({
     el:'.content',
@@ -10,7 +10,7 @@ define(['collections/fave-collection','views/tweets'], function (FaveCollection,
 
       this.data.fetch().done(function(){
 
-        // console.log(this.data);
+        // console.log(this.data.toJSON());
 
         // this.clonedCollection = this.data.clone();
         // this.data.each(function(Model, i){
