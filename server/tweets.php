@@ -1,7 +1,7 @@
 <?php 
 // Twitter App Credentials 
-require "server/secret.php";
-require "server/twitteroauth/autoloader.php";
+require "secret.php";
+require "twitteroauth/autoloader.php";
 
 use Abraham\TwitterOAuth\TwitterOAuth;
 

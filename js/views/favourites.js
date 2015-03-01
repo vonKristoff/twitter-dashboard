@@ -1,52 +1,33 @@
-define(['collections/collection','views/main'], function (Collection, View){
+define(['collections/fave-collection','views/tweets'], function (FaveCollection, TweetView){
 
   var appview = Backbone.View.extend({
     el:'.content',
-    clonedCollection:{},
+    tagName:'ul',
+    className:'tweets',
     initialize:function(){
 
-      this.data = new Collection();
+      this.data = new FaveCollection();
 
       this.data.fetch().done(function(){
 
         // console.log(this.data);
 
-        this.clonedCollection = this.data.clone();
-
-
-        // var tempModels = this.data.filter(function (Model) {
-        //   console.log(Model);
-        //   // return Model.get('hex');
-        // }
-
-        // var tempCollection = new Backbone.Collection(tempModels);
-
-
-        // console.log(tempModels);
-
-
-        this.clonedCollection.each(function(Model, i){
-          Model.set({order: i});
-        })
-
-        // this.data.each(function (Model) {
-        //  // console.log(Model,this);
-        //   this.clonedCollection.add(new Backbone.Model(Model.toJSON()));
-        // },this)
-
-        console.log(this.clonedCollection);
-
-        this.render();
+        this.renderAll();
         
       }.bind(this))
 
     },
-    render:function(){
+    renderAll: function (){
 
-      this.view_main = new View({
-        collection: this.data
+      this.data.each(this.render, this);
+    },
+    render: function (Model){
+
+      // check var against this.name for persistance
+      var singleTweet = new TweetView({
+        model: Model
       })
-      this.$el.append( this.view_main.$el );
+      this.$el.empty().append(singleTweet.render().el);
     }
 
   })

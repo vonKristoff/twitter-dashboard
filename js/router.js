@@ -3,7 +3,7 @@ define(['backbone','views/dashboard', 'views/favourites'],function (Backbone, Da
 	var Router = Backbone.Router.extend({
 
 		routes:{
-			'': 'dashboard',
+			''          : 'dashboard',
       'favourites': 'faves'
 		},
 		dashboard:function(){
