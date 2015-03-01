@@ -45,22 +45,46 @@ define(['backbone','text!handle.json'], function (Backbone, Handle){
       // assuming desktop, and window is portrait
       dm.ratio = dm.w / dm.h;
     
-      switch(Controller.status){
-        case 'dashboard':
-          console.log(Controller.dimensions);
-        break;
-        default:
-        // null
-        break;
+      // call appropriate listener
+      if(Controller.status != 'booting'){
+        Controller.onresize[Controller.status].handle();  
       }
-      
     },
+    resize: {
+      dashboard:{
+        handle:function(){}
+      },
+      favourites:{
+        handle:function(){}
+      }
+    },
+    pollInfluence:function(){
+      var followers = Controller.user.followers_count,
+          following = Controller.user.friends_count,
+          base = 0;
+      // which is biggest to make a base scale from
+      base = (following > followers)? 1/following : 1/followers;
+
+      // cannot let the css scale be lower than 0.5 - clamp it
+      function clamp(num){
+        var min = 0.5,
+            margin = min + ((num * base) * min);
+        return margin
+      }
+
+      return {
+        followers: clamp(followers),
+        following: clamp(following)
+      }
+
+    },
+    // Yey - grab some random bad digital art from some random dudes website
     randomBG: function($tgt){
       var r1 = Math.random()*7,
           r2 = Math.random()*7,
           r3 = Math.random()*7,
           rand = (~~r1).toString() + (~~r2).toString() + (~~r3).toString();
-        
+      // gotcha - insert into  
       $tgt.css({
         'background-image':'url(http://www.random-art.org/img/large/7'+rand+'7.jpg)'
       });

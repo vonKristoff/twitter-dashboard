@@ -1,29 +1,165 @@
-*{
+/* nasty resets */
+*, *:before, *:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 	margin:0px;
 	padding: 0px;
 }
-#performR{
-	width:300px;
-	height:550px;
-	background:#dedede;
-	/*overflow: hidden;*/
+body {
+	font-family: sans-serif;
+	font-size: 18px;
+	background-color: #4cb8f4;
+	background-size: cover;
 }
-.layer{
-	width:100%;
-	position: absolute;
-}
-.blue{
-	background-color: rgba(200,255,200,.3);
-}
-.slides{
-	width:50%;
-	float: left;
-}
-.tweets{
-	width:200px;
-	background-color: grey;
-}
-.ref li{
-	padding:5px;
+ul {
 	list-style: none;
+}
+button {
+	border: none;
+	background-color: rgba(255,255,255,.75);
+}
+
+/* navigation styles */
+.nav{
+	width:100%;
+	position: fixed;
+	top: 0px;
+	z-index: 10;
+}
+.btn {
+	display:inline-block;
+	width: calc(20% - 4px);
+	padding: 1em 0;
+	border-bottom: 4px solid #888;
+	-webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+  transition: all 0.3s;
+}
+.btn:first-child{
+	margin-right: 60%;
+}
+.btn:hover{
+	cursor: pointer;
+	border-bottom: 8px solid #a6e22d;	
+}
+.btn.active{
+	border-bottom: 4px solid #fdd72b;	
+}
+/*footer*/
+.username {
+	font-size: 0.8em;
+	position: fixed;
+	display: block;
+	text-align: center;
+	width:100%;
+	bottom:0;
+	padding: .5em;
+	background-color: rgba(255,255,255,.75);
+	border-top: 4px solid #4cb8f4;
+}
+.username span {
+	font-weight: bold;
+}
+/* basic dynamic content wrapper */
+.wrapper {
+	width: 100%;
+	max-width: 640px;
+	margin: 5em auto;
+	background-color: rgba(255,255,255,.75);
+	padding: 2em;
+	border-radius: 15px;
+}
+@media (max-width: 640px) {
+	.wrapper {
+	  width: 100%;
+	}
+}
+
+/***
+** DASHBOARD
+**/
+.stats {
+	position: relative;
+	width: 100%;
+	padding-top: 100%;
+}
+.user {
+	position: relative;
+}
+.key {
+	position: absolute;
+	width: 100%;
+}
+.key .left {
+	display: inline-block;
+	font-size: .7em;
+	width:49%;
+	text-align: left;
+}
+.key .right {
+	display: inline-block;
+	font-size: .7em;
+	width:49%;
+	text-align: right;
+}
+.pie-ratio {
+	width: 100%;
+	position: absolute;
+	top: 0; left: 0;
+	height: 100%;
+}
+.avatar{
+	transform: translate(50%, 50%);
+	position: absolute;
+	width: 50%;
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 50%;
+	border-radius: 50%;
+}
+	
+.pie-left {
+	-webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  -ms-transition: all 0.5s;
+  transition: all 0.5s;
+	position: absolute;
+	width: 50%;
+	overflow: hidden;
+	height: 100%;
+	transform-origin: 100% 50%;
+	transform: scale(0.5);
+}
+.followers {
+	width: 200%;
+	height: 100%;
+	background: #4cb8f4;
+	position: absolute;
+	border-radius: 50%;
+}
+.pie-right {
+	-webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  -ms-transition: all 0.5s;
+  transition: all 0.5s;
+	position: absolute;
+	width: 50%;
+	overflow: hidden;
+	height: 100%;
+	left:50%;
+	transform-origin: 0% 50%;
+	transform: scale(0.5);
+}
+.following {
+	width: 200%;
+	height: 100%;
+	background: #ff5039;
+	position: absolute;
+	border-radius: 50%;
+	right:0;
 }

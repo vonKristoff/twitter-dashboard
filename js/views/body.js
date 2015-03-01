@@ -3,7 +3,6 @@ define(['backbone', 'text!templates/body.html', 'controller', 'handlebars'], fun
 
   var body = Backbone.View.extend({
     el: 'body',
-    className:'wrapper',
     template: Handlebars.compile($(bodyTemplate).html()),
     initialize: function (){
       Controller.getHandleData(function(){
@@ -24,6 +23,9 @@ define(['backbone', 'text!templates/body.html', 'controller', 'handlebars'], fun
     render: function (){
       
       this.$el.append(this.template(Controller.user));
+
+      Controller.randomBG(this.$el);
+
       return this
     }
   })

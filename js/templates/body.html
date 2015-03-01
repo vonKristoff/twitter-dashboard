@@ -1,16 +1,10 @@
 <script type="text/handlebars">
-
-  <div class="username">Welcome to your Twitter Dashboard, {{ name }}</div>
-  <div class="nav">
-    <div class="dashboard"> 
-      <button data-link="" class="btn-dashboard">Dashboard</button>
-    </div>
-    <div class="faves"> 
-      <button data-link="favourites" class="btn-favourites">Favourites</button>
-    </div>
-  </div>
-  <div class="content">
-    
-  </div>
-
+<div class="nav">
+  <button data-link="" class="btn btn-dashboard">Dashboard</button>
+  <button data-link="favourites" class="btn btn-favourites">Favourites</button>
+</div>
+<div class="wrapper">
+  <div class="content"></div>
+</div>
+<div class="username">Welcome to your Twitter Dashboard, <span>{{ name }}</span></div>
 </script>

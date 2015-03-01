@@ -6,6 +6,7 @@ define(['collections/fave-collection','views/tweets', 'controller'], function (F
     className:'tweets',
     initialize:function(){
       Controller.status = 'favourites';
+      Controller.pageMarker();
       this.data = new FaveCollection();
 
       this.data.fetch().done(function(){

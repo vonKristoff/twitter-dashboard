@@ -4,6 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>Twitter Dashboard</title>
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine:bold,bolditalic|Inconsolata:italic|Droid+Sans">
 	<link type="text/css" href="style.css" rel="stylesheet" media="all" />
 </head>
 <body>
