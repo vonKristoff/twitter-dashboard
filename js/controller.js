@@ -37,18 +37,6 @@ define(['backbone','text!handle.json', 'jqueryui'], function (Backbone, Handle, 
         } 
       },100)
     },
-    getDimensions: function(){
-      var dm = Controller.dimensions;
-      dm.w = $(window).width();
-      dm.h = $(window).height();
-      // assuming desktop, and window is portrait
-      dm.ratio = dm.w / dm.h;
-    
-      // call appropriate listener
-      if(Controller.status != 'booting'){
-        Controller.onresize[Controller.status].handle();  
-      }
-    },
     pageMarker: function(){
       // remove any instance existing
       $('.nav>.btn.active').removeClass('active');

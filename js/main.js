@@ -18,11 +18,6 @@ require(['config'], function(){
         pushState: true
       });
     
-      // basic event listeners
-
-      Controller.getDimensions();
-      window.addEventListener('resize', Controller.getDimensions);
-
     }
       
   })
