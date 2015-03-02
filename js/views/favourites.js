@@ -39,6 +39,8 @@ define(['collections/fave-collection','views/tweets', 'controller'], function (F
 
       this.$el.find('.tweets').append(singleTweet.render().el);
       // this.$el.append(singleTweet.render().el);
+      Controller.tweetFilter();
+      Controller.sortingBehaviour();
     }
 
   })

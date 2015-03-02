@@ -19,7 +19,15 @@ button {
 	border: none;
 	background-color: rgba(255,255,255,.75);
 }
-
+a {
+	text-decoration: none;
+	color: #4cb8f4;
+}
+a:hover {
+	text-decoration: underline;
+	cursor: pointer;
+	color: #ff5039;
+}
 /* navigation styles */
 .nav{
 	width:100%;
@@ -81,6 +89,7 @@ button {
 /***
 ** DASHBOARD
 **/
+
 .stats {
 	position: relative;
 	width: 100%;
@@ -170,4 +179,94 @@ button {
 	position: absolute;
 	border-radius: 50%;
 	right:0;
+}
+
+
+
+/***
+** FAVOURITES
+**/
+
+.tweets li {
+	list-style: none;
+	background-color: rgba(255,255,255,.75);
+}
+.tweets li:nth-child(odd){
+	background-color: rgba(76, 184, 244, 0.14);
+}
+
+.tweet--container {
+  padding: 1em;
+  position: relative;
+}
+.tweet--container .fa{
+	position: absolute;
+	right: 1em;
+	top: calc(50% - 0.5em);
+	color: #4cb8f4;
+}
+.tweet--container .fa:hover {
+	color:#ff5039;
+	cursor: pointer;
+}
+.clear {
+	clear:both;
+	line-height:1px;
+}
+.tweet--container .col-1-4 {
+  max-height: 50px;
+  height: 50px;
+  max-width: 50px;
+  width: 50px;
+  float: left;
+  margin-right: 2em;
+  margin-bottom: .25em;
+}
+.tweet--container .col-1-4 .profile {
+  background-repeat: no-repeat;
+  border-radius: 5px;
+  border: 1px solid rgba(0,0,0,0.2);
+  background-position: center center;
+  background-size: cover;
+  width: 100%;
+  padding-top: 100%;
+}
+.tweet--container .col-head {
+  width: 100%;
+  padding-left: 2em;
+}
+@media (max-width: 640) {
+  .tweet--container .col-head {
+    margin-top: 1em;
+    margin-bottom: 2em;
+  }
+}
+.tweet--container .col-head .head {
+  font-size: 12px;
+  padding-bottom: 0.5em;
+  color: #ff5039;
+}
+.tweet--container .col-head .head div {
+  display: inline-block;
+}
+.tweet--container .col-head .head .handle {
+  margin-left: 1em;
+  color: #4cb8f4;
+}
+.tweet--container .col-body {
+  width: 100%;
+  padding:0 2em;
+  font-size: .9em;
+}
+@media (max-width: 640) {
+  .tweet--container .col-body {
+    margin-top: 2em;
+    padding-left: 0;
+  }
+}
+
+.tweets li.placeholder {
+	border-left: 20px solid #a6e22d;
+	height:5em;
+	width:100%;
 }

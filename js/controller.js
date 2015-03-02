@@ -1,4 +1,4 @@
-define(['backbone','text!handle.json'], function (Backbone, Handle){
+define(['backbone','text!handle.json', 'jqueryui'], function (Backbone, Handle, jqueryui){
 
   var Controller = {
     status:'booting',
@@ -82,6 +82,42 @@ define(['backbone','text!handle.json'], function (Backbone, Handle){
         followers: clamp(followers),
         following: clamp(following)
       }
+
+    },
+    tweetFilter: function (){
+  
+      function urlify(text) {
+        var urlRegex = /(https?:\/\/[^\s]+)/g;
+        return text.replace(urlRegex, '<a href="$1" target="_blank">$1</a>')
+      }
+
+
+      $('.tweets li').each(function (i){
+
+        var p = $(this).find('.profile');
+        // get img src
+        var src = p.data('src');
+        // set bg
+        p.css({
+          'background-image': 'url('+src+')'
+        })
+
+        var body = $(this).find('.text')
+        ,   text = body.text()
+        ,   linked = urlify(text);
+
+        body.html(linked);
+
+      })  
+    },
+    sortingBehaviour:function(){
+
+      $('.tweets').sortable({
+        placeholder: 'placeholder',
+        update: function(ev, ui){
+          console.log(ev, ui);
+        }
+      }); 
 
     },
     // Yey - grab some random bad digital art from some random dudes website
