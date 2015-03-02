@@ -32,6 +32,8 @@ Without the use of CSS preprocessing, I have just scratched out the relevant css
 
 I am a bit rusty with backbone, and so I may have gone off piste from BB best practices, but overall I think the method is solid.
 
+Tests. Usually I have at least JS/CSS linting when using a build tool. But, sorry folks no tests. 
+
 ---
 
 ####Structure
