@@ -4,6 +4,7 @@ define(['backbone','views/dashboard', 'views/favourites', 'controller'],function
 
 		routes:{
 			''          : 'dashboard',
+      'index.php' : 'dashboard',
       'favourites': 'faves'
 		},
 		dashboard:function(){

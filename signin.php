@@ -4,13 +4,12 @@
   <meta name="viewport" content="width=device-width, user-scalable=no,initial-scale=1.0">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <title>Twitter Bookmarks</title>
-  <link type="text/css" href="css/style.css" rel="stylesheet" media="all" />
+  <title>Twitter Dashboard</title>
+  <link type="text/css" href="style.css" rel="stylesheet" media="all" />
 </head>
 <body>
 <div class="wrapper">
-  <div class="header">
-    <div class="menu handle">
+  
 
 <?php
 
@@ -33,9 +32,7 @@ $url = $connection->url('oauth/authorize', array('oauth_token' => $request_token
 
 echo '<a class="connect" href="'.$url.'">Connect</a>';
 
-echo '</div>
-      </div>
-      </div>
-      </body>
-      </html>';
 ?>
+</div>
+</body>
+</html>

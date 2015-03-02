@@ -6,7 +6,6 @@ define(['backbone','text!handle.json', 'jqueryui'], function (Backbone, Handle, 
     connected: false,
     dimensions:{ w:0, h:0, ratio:0 },
     getHandleData: function (next){
-      
 
       Controller.user = JSON.parse(Handle)
 

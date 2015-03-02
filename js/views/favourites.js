@@ -9,22 +9,35 @@ define(['collections/fave-collection','views/tweets', 'controller'], function (F
       Controller.status = 'favourites';
       Controller.pageMarker();
 
-      this.data = new FaveCollection();
+      if(Controller.faves){
+        console.log('already have data');
 
-      this.data.fetch().done(function(){
-
-        // console.log(this.data);
-
-        // console.log(this.data.toJSON());
-
-        // this.clonedCollection = this.data.clone();
-        // this.data.each(function(Model, i){
-        //   Model.set({order: i});
-        // })
-
+        this.data = Controller.faves;
+        this.data.comparator = 'order';
         this.renderAll();
+        // order by order
+
+      } else {
+        console.log('fetching data');
+        
+        this.data = new FaveCollection();
+
+        Controller.faves = _.extend({}, this.data);
+
+        this.data.fetch().done(function(){
+
+          // set an order reference
+          this.data.each(function(Model, i){
+            Model.set({order: i});
+          })
+          this.renderAll();
         
       }.bind(this))
+
+
+      }
+
+      
 
     },
     renderAll: function (){
@@ -33,12 +46,9 @@ define(['collections/fave-collection','views/tweets', 'controller'], function (F
     },
     render: function (Model){
 
-      var singleTweet = new TweetView({
-        model: Model
-      })
-
+      var singleTweet = new TweetView({ model: Model })
       this.$el.find('.tweets').append(singleTweet.render().el);
-      // this.$el.append(singleTweet.render().el);
+
       Controller.tweetFilter();
       Controller.sortingBehaviour();
     }

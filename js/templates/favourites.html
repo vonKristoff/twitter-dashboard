@@ -1,19 +1,19 @@
 <script type="text/handlebars">
     
-  <div class="tweet--container"><label></label>
+  <div data-order={{ order }} class="tweet--container">
     <div data-id={{ id }}></div>
     <div class="col-1-4">
       <div data-src="{{user.profile_image_url}}" class="profile"></div>
     </div>
     <div class="col-head">
       <div class="head">
-        <div class="name">{{user.name}}</div>
-        <div class="handle">@{{user.screen_name}}</div>
+        <div class="name">{{ user.name }}</div>
+        <div class="handle">@{{ user.screen_name }}</div>
       </div>
     </div>
     <div class="col-body">
       <div class="body">
-        <div class="text">{{text}}</div>
+        <div class="text">{{ text }}</div>
       </div>
     </div>
     <div class="clear"></div>

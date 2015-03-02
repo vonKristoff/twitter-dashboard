@@ -28,6 +28,9 @@ a:hover {
 	cursor: pointer;
 	color: #ff5039;
 }
+a.connect{
+  text-align: center;
+}
 /* navigation styles */
 .nav{
 	width:100%;
