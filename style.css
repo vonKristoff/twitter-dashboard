@@ -280,6 +280,7 @@ a.connect{
   .tweet--container .col-body {
     margin-top: 2em;
     padding-left: 0;
+    font-size: .7em;
   }
 }
 
