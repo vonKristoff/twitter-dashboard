@@ -1,31 +1,23 @@
 define(['backbone','text!handle.json', 'jqueryui'], function (Backbone, Handle, jqueryui){
 
   var Controller = {
+    
     user: {},
     connected: false,
     getHandleData: function (next){
+      // grab the user data to populate dashboard
+      $.ajax({
+        url:'server/handle.php',
+        method:'GET',
+        success: function (res){
 
-      Controller.user = JSON.parse(Handle)
-
-      Controller.connected = true;
-      next();
-
-
-      // going local 
-      // $.ajax({
-      //   url:'server/handle.php',
-      //   method:'GET',
-      //   success: function (res){
-
-      //     console.log(res);
-
-      //     Controller.user = JSON.parse(res).pop();
-
-      //     Controller.connected = true;
-      //     next();
-      //   }
-      // })
+          Controller.user = JSON.parse(res).pop();
+          Controller.connected = true;
+          next();
+        }
+      })
     },
+    // waiting for data to be loaded so that view can render
     onConnection: function (next){
 
       var renderOnLoad = setInterval(function(){
@@ -35,12 +27,14 @@ define(['backbone','text!handle.json', 'jqueryui'], function (Backbone, Handle, 
         } 
       },100)
     },
+    // keep a visual mark on which page we are at 
     pageMarker: function (tgt){
       // remove any instance existing
       $('.nav>.btn.active').removeClass('active');
       // set page class
       $('.btn-'+tgt).addClass('active')
     },
+    // dashboard data viz functionallity
     pollInfluence:function(){
       var followers = Controller.user.followers_count,
           following = Controller.user.friends_count,
@@ -61,6 +55,7 @@ define(['backbone','text!handle.json', 'jqueryui'], function (Backbone, Handle, 
       }
 
     },
+    // switching out data attrs for real contexts and enabling the string URLS as actual links
     tweetFilter: function (){
   
       function urlify(text) {
@@ -86,13 +81,18 @@ define(['backbone','text!handle.json', 'jqueryui'], function (Backbone, Handle, 
 
       })  
     },
+    // allow dragging and resorting of favourites
     sortingBehaviour:function(){
 
       $('.tweets').sortable({
         placeholder: 'placeholder',
         update: function(ev, ui){
           
-          var prev = $(ui.item).find('.tweet--container').data('order');
+          var fromIndex = $(ui.item).find('.tweet--container').data('order');
+
+          // ok ran out of time to actually update the model 'order' attribute
+          // the point would be to store this model (local storage or server) - so that you can favouritise your faves
+          // and that each reload to site would remember that order history
         }
       }); 
 

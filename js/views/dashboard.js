@@ -32,7 +32,6 @@ define(['backbone', 'text!templates/dashboard.html', 'controller', 'handlebars']
     },
     render:function(){
 
-      // console.log(Controller.user);
       // render as usual
       this.$el.empty().append(this.template(Controller.user));
       // get twitter profile pic

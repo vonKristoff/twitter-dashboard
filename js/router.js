@@ -4,11 +4,10 @@ define(['backbone','views/dashboard', 'views/favourites', 'controller'],function
 
 		routes:{
 			''          : 'dashboard',
-      'index.php' : 'dashboard',
+      'index.php' : 'dashboard', // capture callback from twitter auth
       'favourites': 'faves'
 		},
 		dashboard:function(){
-      // render the relevant view here
       console.log('router:dashboard');
       // dashboard route relies on existance of handle data
       Controller.onConnection(function(){
@@ -17,7 +16,6 @@ define(['backbone','views/dashboard', 'views/favourites', 'controller'],function
       
 		},
     faves: function (){
-      // render the relevant view here
       console.log('router:favourites');
       var content = new Favourites();
     }

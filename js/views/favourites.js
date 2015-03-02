@@ -7,15 +7,13 @@ define(['collections/fave-collection','views/tweets', 'controller'], function (F
     initialize:function(){
 
       Controller.pageMarker('favourites');
-
+      // have we already loaded the data?
       if(Controller.faves){
         console.log('already have data');
 
         this.data = Controller.faves;
         this.data.comparator = 'order';
         this.renderAll();
-        // order by order
-
       } else {
         console.log('fetching data');
         
@@ -41,7 +39,8 @@ define(['collections/fave-collection','views/tweets', 'controller'], function (F
 
       var singleTweet = new TweetView({ model: Model }),
           lag = Model.get('order');
-
+          
+      // slight render delay for effect 
       setTimeout(function(){
         this.$el.find('.tweets').append(singleTweet.render().el);
       

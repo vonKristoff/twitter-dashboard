@@ -6,9 +6,11 @@ define(['backbone','text!templates/favourites.html','handlebars'], function (Bac
 		render:function(){	
 
 			this.$el.append(this.template(this.model.toJSON()));
+
 			setTimeout(function(){
 				this.$el.css('opacity',1);
 			}.bind(this),50);
+			
 			return this
 		}
 	})
