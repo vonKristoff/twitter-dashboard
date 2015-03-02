@@ -1,6 +1,6 @@
 {
-  "name": "Canvas_Backbone_Require",
-  "version": "0.0.1",
+  "name": "Twitter_Dashing",
+  "version": "0.1.0",
   "dependencies": {
   	"backbone":"*",
   	"backbone.localStorage": "*",
