@@ -1,10 +1,8 @@
 define(['backbone','text!handle.json', 'jqueryui'], function (Backbone, Handle, jqueryui){
 
   var Controller = {
-    status:'booting',
     user: {},
     connected: false,
-    dimensions:{ w:0, h:0, ratio:0 },
     getHandleData: function (next){
 
       Controller.user = JSON.parse(Handle)
@@ -37,19 +35,11 @@ define(['backbone','text!handle.json', 'jqueryui'], function (Backbone, Handle, 
         } 
       },100)
     },
-    pageMarker: function(){
+    pageMarker: function (tgt){
       // remove any instance existing
       $('.nav>.btn.active').removeClass('active');
       // set page class
-      $('.btn-'+Controller.status).addClass('active')
-    },
-    resize: {
-      dashboard:{
-        handle:function(){}
-      },
-      favourites:{
-        handle:function(){}
-      }
+      $('.btn-'+tgt).addClass('active')
     },
     pollInfluence:function(){
       var followers = Controller.user.followers_count,
@@ -78,7 +68,6 @@ define(['backbone','text!handle.json', 'jqueryui'], function (Backbone, Handle, 
         return text.replace(urlRegex, '<a href="$1" target="_blank">$1</a>')
       }
 
-
       $('.tweets li').each(function (i){
 
         var p = $(this).find('.profile');
@@ -89,9 +78,9 @@ define(['backbone','text!handle.json', 'jqueryui'], function (Backbone, Handle, 
           'background-image': 'url('+src+')'
         })
 
-        var body = $(this).find('.text')
-        ,   text = body.text()
-        ,   linked = urlify(text);
+        var body = $(this).find('.text'),
+            text = body.text(),
+            linked = urlify(text);
 
         body.html(linked);
 
@@ -102,7 +91,8 @@ define(['backbone','text!handle.json', 'jqueryui'], function (Backbone, Handle, 
       $('.tweets').sortable({
         placeholder: 'placeholder',
         update: function(ev, ui){
-          console.log(ev, ui);
+          
+          var prev = $(ui.item).find('.tweet--container').data('order');
         }
       }); 
 

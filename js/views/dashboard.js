@@ -4,8 +4,7 @@ define(['backbone', 'text!templates/dashboard.html', 'controller', 'handlebars']
     el:'.content',
     template: Handlebars.compile($(dashboardTemplate).html()),
     initialize:function(){
-      Controller.status = 'dashboard';
-      Controller.pageMarker();
+      Controller.pageMarker('dashboard');
       this.render();
     },
     attachImage: function(template){

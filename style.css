@@ -83,6 +83,7 @@ a.connect{
 	padding: 2em;
 	border-radius: 15px;
 }
+
 @media (max-width: 640px) {
 	.wrapper {
 	  width: 100%;
@@ -150,8 +151,12 @@ a.connect{
 	overflow: hidden;
 	height: 100%;
 	opacity: 0;
-	transform-origin: 100% 50%;
-	transform: scale(0.5);
+  -webkit-transform-origin: 100% 50%;
+  -ms-transform-origin: 100% 50%;
+  transform-origin: 100% 50%;
+  -webkit-transform: scale(0.5);
+  -ms-transform: scale(0.5);
+  transform: scale(0.5);
 }
 .followers {
 	width: 200%;
@@ -172,8 +177,12 @@ a.connect{
 	height: 100%;
 	left:50%;
 	opacity: 0;
-	transform-origin: 0% 50%;
-	transform: scale(0.5);
+  -webkit-transform-origin: 0% 50%;
+  -ms-transform-origin: 0% 50%;
+  transform-origin: 0% 50%;
+  -webkit-transform: scale(0.5);
+  -ms-transform: scale(0.5);
+  transform: scale(0.5);
 }
 .following {
 	width: 200%;
@@ -193,6 +202,8 @@ a.connect{
 .tweets li {
 	list-style: none;
 	background-color: rgba(255,255,255,.75);
+  opacity: 0;
+  transition: opacity 1s;
 }
 .tweets li:nth-child(odd){
 	background-color: rgba(76, 184, 244, 0.14);

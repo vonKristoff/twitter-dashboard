@@ -6,8 +6,7 @@ define(['collections/fave-collection','views/tweets', 'controller'], function (F
     className:'tweets',
     initialize:function(){
 
-      Controller.status = 'favourites';
-      Controller.pageMarker();
+      Controller.pageMarker('favourites');
 
       if(Controller.faves){
         console.log('already have data');
@@ -21,7 +20,6 @@ define(['collections/fave-collection','views/tweets', 'controller'], function (F
         console.log('fetching data');
         
         this.data = new FaveCollection();
-
         Controller.faves = _.extend({}, this.data);
 
         this.data.fetch().done(function(){
@@ -32,13 +30,8 @@ define(['collections/fave-collection','views/tweets', 'controller'], function (F
           })
           this.renderAll();
         
-      }.bind(this))
-
-
+        }.bind(this))
       }
-
-      
-
     },
     renderAll: function (){
       this.$el.empty().html('<ul class="tweets"></ul>');
@@ -46,13 +39,17 @@ define(['collections/fave-collection','views/tweets', 'controller'], function (F
     },
     render: function (Model){
 
-      var singleTweet = new TweetView({ model: Model })
-      this.$el.find('.tweets').append(singleTweet.render().el);
+      var singleTweet = new TweetView({ model: Model }),
+          lag = Model.get('order');
 
-      Controller.tweetFilter();
-      Controller.sortingBehaviour();
+      setTimeout(function(){
+        this.$el.find('.tweets').append(singleTweet.render().el);
+      
+        Controller.tweetFilter();
+        Controller.sortingBehaviour();
+      
+      }.bind(this), (100 * lag));
     }
-
   })
 
   return appview
